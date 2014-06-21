@@ -14,5 +14,10 @@ Raft Consensus Algorithm
 ### Distributed Computing ###
 - [Distributed Algorithms](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-852j-distributed-algorithms-fall-2009/index.htm)
 
-## Contributers ##
+## Contributing ##
+Please create a pull request for each major modification and wait for a thumbs
+up from at least one other contributer. Feel free to bypass the pull request
+for very minor changes.
+
+### Contributors ###
 - Michael Whittaker
