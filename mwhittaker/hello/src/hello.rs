@@ -1,4 +1,5 @@
-fn main() {
+/// Prints "Hello, world!"
+pub fn main() {
     println!("Hello, world!");
 }
 
