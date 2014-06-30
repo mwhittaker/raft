@@ -1,0 +1,10 @@
+[package]
+name    = "cluster"
+version = "0.1.0"
+authors = ["mjw297@cornell.edu"]
+
+[[bin]]
+name = "server"
+
+[[bin]]
+name = "client"
