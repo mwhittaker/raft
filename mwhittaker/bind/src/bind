@@ -1,0 +1,15 @@
+enum Maybe<T> {
+    Nothing,
+    Just(T)
+}
+
+impl<'a, T, U> Shr<|&T|: 'a -> Maybe<U>, Maybe<U>> for Maybe<T> {
+    fn shr(&self, f: &|&T| -> Maybe<U>) -> Maybe<U> {
+        match *self {
+            Nothing => Nothing,
+            Just(ref x) => (*f)(x)
+        }
+    }
+}
+
+fn main() {}
