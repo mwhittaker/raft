@@ -1,0 +1,4 @@
+[package]
+name    = "raft"
+version = "0.1.0"
+authors = [ "mjw297@cornell.edu" ]
