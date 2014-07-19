@@ -1,23 +1,11 @@
-# raft #
-Raft Consensus Algorithm
+# The Raft Consensus Algorithm #
 
-## Resources ##
+> Raft is a consensus algorithm that is designed to be easy to understand. It's
+> equivalent to Paxos in fault-tolerance and performance. The difference is
+> that it's decomposed into relatively independent subproblems, and it cleanly
+> addresses all major pieces needed for practical systems. We hope Raft will
+> make consensus available to a wider audience, and that this wider audience
+> will be able to develop a variety of higher quality consensus-based systems
+> than are available today.
 
-### Raft ###
-- [In Search of an Understandable Consensus Algorithm](https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf)
-- [Raft Consensus Algorithm](http://raftconsensus.github.io/)
-- [The Secret Lives of Data](http://thesecretlivesofdata.com/raft/)
-
-### Go ###
-- [golang docs](http://golang.org/doc/)
-
-### Distributed Computing ###
-- [Distributed Algorithms](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-852j-distributed-algorithms-fall-2009/index.htm)
-
-## Contributing ##
-Please create a pull request for each major modification and wait for a thumbs
-up from at least one other contributer. Feel free to bypass the pull request
-for very minor changes.
-
-### Contributors ###
-- Michael Whittaker
+*\- [raftconsensus.github.io](http://raftconsensus.github.io/)*
