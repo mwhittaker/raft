@@ -9,7 +9,7 @@ class { 'baseconfig':
 }
 
 # set global exec path
-Exec { path => [ "/bin", "/sbin/", "/usr/bin/", "/usr/sbin" ] }
+Exec { path => [ "/bin", "/sbin/", "/usr/bin/", "/usr/sbin", "/usr/local/bin", "/usr/local/sbin" ] }
 
 include baseconfig
 include git
@@ -19,3 +19,4 @@ include gvim
 include tmux
 include rust
 include capnproto
+include capnprotorust
