@@ -1,0 +1,14 @@
+[package]
+
+name = "addressbook"
+version = "0.1.0"
+authors = [ "mjw297@cornell.edu" ]
+build = "./build.sh"
+
+[[bin]]
+
+name = "addressbook"
+
+[dependencies.capnp]
+
+git = "https://github.com/dwrensha/capnproto-rust"
