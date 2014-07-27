@@ -1,0 +1,14 @@
+[package]
+
+name = "polygon"
+version = "0.0.1"
+authors = ["Michael Whittaker <mjw297@cornell.edu>"]
+build = "./build.sh"
+
+[[bin]]
+
+name = "polygon"
+
+[dependencies.capnp]
+
+git = "https://github.com/dwrensha/capnproto-rust"
