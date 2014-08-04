@@ -9,6 +9,7 @@ class capnprotorust {
     exec { "make-capnprotorust":
         command => "make",
         user    => "vagrant",
+        require => Exec["install-rust"],
         cwd     => "/home/vagrant/capnproto-rust",
     }
 
