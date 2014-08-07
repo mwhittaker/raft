@@ -22,6 +22,7 @@ class capnproto {
     exec { "make-check-capnp":
         command => "make check",
         user    => "vagrant",
+        timeout => 0,
         cwd     => "/home/vagrant/capnproto-c++-0.4.1",
     }
 
