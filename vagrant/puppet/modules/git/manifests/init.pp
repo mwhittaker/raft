@@ -3,10 +3,6 @@ class git {
         ensure => installed;
     }
 
-    package { "gitg":
-        ensure => "installed";
-    }
-
     file { '/home/vagrant/.gitconfig':
         owner => 'vagrant',
         group => 'vagrant',
