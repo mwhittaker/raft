@@ -3,6 +3,9 @@ use std::os;
 pub mod server;
 pub mod client;
 
+static SERVER_HOST: &'static str = "127.0.0.1";
+static SERVER_PORT: u16          = 9999;
+
 fn usage() {
     println!("raft (client|server)");
 }

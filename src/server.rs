@@ -8,7 +8,7 @@ pub fn main() {
 }
 
 fn exec() -> IoResult<()> {
-    let     listener = try!(TcpListener::bind("127.0.0.1", 9999u16));
+    let     listener = try!(TcpListener::bind(super::SERVER_HOST, super::SERVER_PORT));
     let mut acceptor = try!(listener.listen());
     for mut stream in acceptor.incoming() {
         match stream {
