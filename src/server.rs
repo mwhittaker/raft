@@ -1,43 +1,29 @@
-use std::io::{IoResult, TcpListener, TcpStream, Listener, Acceptor};
+use super::{SERVER_HOST, SERVER_PORT};
+use std::io::{TcpListener, TcpStream, Listener, Acceptor};
+use std::io::stdio;
 
 pub fn main() {
-    match exec() {
-        Ok(()) => {},
-        Err(e) => println!("{}", e),
+    match TcpListener::bind(SERVER_HOST, SERVER_PORT).listen() {
+        Ok(mut acceptor) => {
+            for mut stream in acceptor.incoming() {
+                match stream {
+                    Ok(stream) => { spawn(proc() {echo_stream(stream)}); },
+                    Err(err)   => { println!("{}", err);                 },
+                }
+            }
+        },
+        Err(e) => {
+            println!("{}", e);
+        },
     }
-}
-
-fn exec() -> IoResult<()> {
-    let     listener = try!(TcpListener::bind(super::SERVER_HOST, super::SERVER_PORT));
-    let mut acceptor = try!(listener.listen());
-    for mut stream in acceptor.incoming() {
-        match stream {
-            Ok(stream) => {
-                spawn(proc() {echo_stream(stream)});
-            },
-            Err(e) => {
-                println!("{}", e);
-            },
-        }
-    }
-    Ok(())
 }
 
 fn echo_stream(mut stream: TcpStream) {
-    loop {
-        match stream.read_byte() {
-            Ok(b) => {
-                let c = b as char;
-                if c == '\n' {
-                    println!("");
-                } else {
-                    print!("{}", c);
-                }
-            },
-            Err(e) => {
-                println!("{}", e);
-                return
-            },
+    for b in stream.bytes() {
+        match b {
+            Ok(b)  => { print!("{}", b as char); },
+            Err(e) => { println!("{}", e);       },
         }
+        stdio::flush();
     }
 }
