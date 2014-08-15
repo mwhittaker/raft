@@ -4,7 +4,7 @@ use help::{usage, parse_address};
 mod server;
 mod client;
 
-static CLIENT_PING_PERIOD: u64 = 2000;
+static CLIENT_PING_PERIOD: i32   = 1000;
 
 type Address = (String, u16);
 

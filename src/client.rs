@@ -1,5 +1,6 @@
 use super::{CLIENT_PING_PERIOD};
 use std::io::timer;
+use std::time::{Duration};
 use std::io::{TcpStream, Timer};
 
 fn get_stream(host: &str, port: u16) -> TcpStream {
@@ -10,7 +11,7 @@ fn get_stream(host: &str, port: u16) -> TcpStream {
                 return stream;
             },
             Err(_) => {
-                timer::sleep(1000);
+                timer::sleep(Duration::seconds(1));
             }
         }
     }
@@ -28,7 +29,7 @@ pub fn connect(host: &str, port: u16, msg: &str) {
             }
         }
     };
-    let periodic = timer.periodic(CLIENT_PING_PERIOD);
+    let periodic = timer.periodic(Duration::milliseconds(CLIENT_PING_PERIOD));
 
     loop {
         periodic.recv();
