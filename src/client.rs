@@ -1,4 +1,5 @@
 use super::{SERVER_HOST, SERVER_PORT, CLIENT_PING_PERIOD};
+use std::time::{Duration};
 use std::io::{TcpStream, Timer};
 
 pub fn main() {
@@ -13,7 +14,7 @@ pub fn main() {
             }
         }
     };
-    let periodic = timer.periodic(CLIENT_PING_PERIOD);
+    let periodic = timer.periodic(Duration::milliseconds(CLIENT_PING_PERIOD));
 
     loop {
         periodic.recv(); 

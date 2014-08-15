@@ -5,7 +5,7 @@ pub mod client;
 
 static SERVER_HOST: &'static str = "127.0.0.1";
 static SERVER_PORT: u16          = 9999;
-static CLIENT_PING_PERIOD: u64   = 1000;
+static CLIENT_PING_PERIOD: i32   = 1000;
 
 fn usage() {
     println!("raft (client|server)");
