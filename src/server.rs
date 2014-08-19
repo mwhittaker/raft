@@ -1,29 +1,27 @@
 use std::io::{TcpListener, TcpStream, Listener, Acceptor};
 use std::io::stdio;
 
-pub fn serve(host: &str, port: u16) {
-    println!("listening on {}:{}", host, port);
-    match TcpListener::bind(host, port).listen() {
-        Ok(mut acceptor) => {
-            for mut stream in acceptor.incoming() {
-                match stream {
-                    Ok(stream) => { spawn(proc() {echo_stream(stream)}); },
-                    Err(err)   => { println!("{}", err);                 },
-                }
-            }
-        },
-        Err(e) => {
-            println!("{}", e);
-        },
-    }
+type Term = u64;
+type Id = SocketAddr;
+
+struct PersistentState {
+    current_term: Term,
+    voted_for:    Option<Term>,
+    log:          Vec<LogEntry>,
 }
 
-fn echo_stream(mut stream: TcpStream) {
-    for b in stream.bytes() {
-        match b {
-            Ok(b)  => { print!("{}", b as char); },
-            Err(e) => { println!("{}", e);       },
-        }
-        stdio::flush();
-    }
+struct VolatileStateAll {
+    commit_index: Index,
+    last_applied: Index,
+}
+
+struct VolatileStateLeader {
+    next_index:  Vec<Index>,
+    match_index: Vec<Index>,
+}
+
+struct Server {
+    persistent_state:      PersistentState,
+    volatile_state_all:    VolatileStateAll,
+    volatile_state_leader: Option<VolatileStateLeader>,
 }
