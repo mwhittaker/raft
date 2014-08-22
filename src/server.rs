@@ -1,9 +1,9 @@
-use super::{SERVER_HOST, SERVER_PORT};
 use std::io::{TcpListener, TcpStream, Listener, Acceptor};
 use std::io::stdio;
 
-pub fn main() {
-    match TcpListener::bind(SERVER_HOST, SERVER_PORT).listen() {
+pub fn serve(host: &str, port: u16) {
+    println!("listening on {}:{}", host, port);
+    match TcpListener::bind(host, port).listen() {
         Ok(mut acceptor) => {
             for mut stream in acceptor.incoming() {
                 match stream {
