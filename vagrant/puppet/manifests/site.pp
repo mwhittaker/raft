@@ -13,10 +13,6 @@ Exec { path => [ "/bin", "/sbin/", "/usr/bin/", "/usr/sbin", "/usr/local/bin", "
 
 include baseconfig
 include git
-include gpp
 include vim
-include gvim
 include tmux
 include rust
-include capnproto
-include capnprotorust
