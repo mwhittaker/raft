@@ -1,4 +1,5 @@
 [package]
-name    = "raft"
-version = "0.1.0"
-authors = [ "mjw297@cornell.edu" ]
+
+name = "raft"
+version = "0.0.1"
+authors = ["Michael Whittaker <mjw297@cornell.edu>"]
